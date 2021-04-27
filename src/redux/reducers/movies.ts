@@ -1,11 +1,9 @@
-import { ADD_SEARCH_RESULTS } from '../../constants/actionTypes';
+import { UPDATE_MOVIE_RESULTS } from '../../constants/actionTypes';
 
 const moviesReducer = (state: IMovie[] = [], action: MoviesAction) => {
   const { movies } = action;
-  if (action.type === ADD_SEARCH_RESULTS) {
-    return Object.assign({}, state, {
-      tasks: state.concat(movies),
-    });
+  if (action.type === UPDATE_MOVIE_RESULTS) {
+    state = movies;
   }
   return state;
 };

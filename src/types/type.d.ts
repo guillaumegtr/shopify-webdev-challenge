@@ -1,6 +1,8 @@
 interface IMovie {
-  name: string;
-  description: string;
+  title: string;
+  year: string;
+  type: string;
+  poster: string;
 }
 
 interface INominate {
