@@ -7,7 +7,11 @@ interface NominationsProps {
 
 const Nominations = (props: NominationsProps) => {
   const { className } = props;
-  return <Card className={`nominations ${className}`}>nominations</Card>;
+  return (
+    <Card className={`nominations p-1 ${className}`}>
+      <Card.Header as="h4">Nominations</Card.Header>
+    </Card>
+  );
 };
 
 export default Nominations;

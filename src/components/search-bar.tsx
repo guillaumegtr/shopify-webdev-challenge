@@ -3,7 +3,7 @@ import { Card, Icon, Input, Form } from 'semantic-ui-react';
 
 const SearchBar = () => {
   return (
-    <Card className="search-bar">
+    <Card className="search-bar p-1">
       <Form>
         <Form.Field>
           <label>Movie title</label>

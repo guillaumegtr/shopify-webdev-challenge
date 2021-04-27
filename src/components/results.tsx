@@ -7,7 +7,12 @@ interface ResultsProps {
 
 const Results = (props: ResultsProps) => {
   const { className } = props;
-  return <Card className={`results ${className}`}>results</Card>;
+  const searchString = 'a movie';
+  return (
+    <Card className={`results p-1 ${className}`}>
+      <Card.Header as="h4">{`Results for "${searchString}"`}</Card.Header>
+    </Card>
+  );
 };
 
 export default Results;
