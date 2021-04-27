@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card, Icon, Input, Form } from 'semantic-ui-react';
-import updateSearchString from '../redux/actions/search';
+import {
+  updateSearchString,
+  updatePageNumberCount,
+} from '../redux/actions/search';
 import { updateMovieResults } from '../redux/actions/movies';
 import { searchMovieByName } from '../api/omdb';
-import { MovieDTO } from '../model/MovieDTO';
 
 const SEARCH_DELAY = 500;
 
@@ -15,9 +17,17 @@ const SearchBar = () => {
   const handleChange = async (searchTerm: string) => {
     clearTimeout(timeoutId);
     const timeout = setTimeout(async () => {
-      dispatch(updateSearchString(searchTerm));
+      dispatch(updateSearchString({ searchTerm }));
+
       const data = await searchMovieByName(searchTerm);
+
       dispatch(updateMovieResults(data.Search));
+      // api returns 10 results per page
+      dispatch(
+        updatePageNumberCount({
+          pagesNumber: Math.ceil(data.totalResults / 10),
+        })
+      );
     }, SEARCH_DELAY);
     setTimeoutId(timeout);
   };
