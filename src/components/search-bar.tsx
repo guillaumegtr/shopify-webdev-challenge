@@ -1,9 +1,9 @@
 import React from 'react';
-import { Icon, Input, Form } from 'semantic-ui-react';
+import { Card, Icon, Input, Form } from 'semantic-ui-react';
 
 const SearchBar = () => {
   return (
-    <div className="ui card search-bar">
+    <Card className="search-bar">
       <Form>
         <Form.Field>
           <label>Movie title</label>
@@ -17,7 +17,7 @@ const SearchBar = () => {
           </Input>
         </Form.Field>
       </Form>
-    </div>
+    </Card>
   );
 };
 
