@@ -27,5 +27,5 @@ type MoviesAction = {
 
 type SearchAction = {
   type: string;
-  search: ISearch;
+  search?: ISearch;
 };

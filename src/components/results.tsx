@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Card, List, Button, Pagination } from 'semantic-ui-react';
+import { Card, List, Pagination } from 'semantic-ui-react';
+import ResultItem from './items/result-item';
 
 interface ResultsProps {
   className: string;
@@ -29,15 +30,7 @@ const Results = (props: ResultsProps) => {
       <Card.Content>
         <List>
           {results.map((movie, i) => (
-            <List.Item key={i}>
-              <List.Content floated="right">
-                <Button size="tiny">Nominate</Button>
-              </List.Content>
-
-              <p>
-                {movie.title} ({movie.year})
-              </p>
-            </List.Item>
+            <ResultItem key={i} movie={movie} List={List} />
           ))}
         </List>
       </Card.Content>

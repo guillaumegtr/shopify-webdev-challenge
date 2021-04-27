@@ -4,6 +4,7 @@ import { Card, Icon, Input, Form } from 'semantic-ui-react';
 import {
   updateSearchString,
   updatePageNumberCount,
+  clearSearch,
 } from '../redux/actions/search';
 import { updateMovieResults } from '../redux/actions/movies';
 import { searchMovieByName } from '../api/omdb';
@@ -16,6 +17,13 @@ const SearchBar = () => {
 
   const handleChange = async (searchTerm: string) => {
     clearTimeout(timeoutId);
+
+    if (!searchTerm) {
+      dispatch(clearSearch());
+      dispatch(updateMovieResults([]));
+      return;
+    }
+
     const timeout = setTimeout(async () => {
       dispatch(updateSearchString({ searchTerm }));
 
