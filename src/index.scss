@@ -1,5 +1,7 @@
 @use './sass/home.scss';
+@use './sass/common.scss';
 @use './sass/components/search-bar.scss';
+@use './sass/components/results.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body {
