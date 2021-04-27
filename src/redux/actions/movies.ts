@@ -4,7 +4,7 @@ import { MovieDTO } from '../../model/MovieDTO';
 const updateMovieResults = (movies: MovieDTO[]) => {
   const action: MoviesAction = {
     type: UPDATE_MOVIE_RESULTS,
-    movies: MovieDTO.toMovie(movies),
+    movies: movies ? MovieDTO.toMovie(movies) : [],
   };
   return action;
 };

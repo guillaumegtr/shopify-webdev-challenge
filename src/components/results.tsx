@@ -29,9 +29,10 @@ const Results = (props: ResultsProps) => {
       <Card.Header as="h4">{searchResults()}</Card.Header>
       <Card.Content>
         <List>
-          {results.map((movie, i) => (
-            <ResultItem key={i} movie={movie} List={List} />
-          ))}
+          {results &&
+            results.map((movie, i) => (
+              <ResultItem key={i} movie={movie} List={List} />
+            ))}
         </List>
       </Card.Content>
       <div className="flex-row justify-center">
