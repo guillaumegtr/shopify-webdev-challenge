@@ -1,10 +1,12 @@
 @use './sass/home.scss';
+@use './sass/components/search-bar.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body {
   font-family: 'Roboto', sans-serif;
   background: #fcfcfc;
   color: #0a0a0a;
+  background-color: #edf2f4;
 }
 
 h1 {
