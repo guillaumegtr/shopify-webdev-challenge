@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { API_KEY, API_URL } from '../constants/api';
-import { useSelector } from 'react-redux';
 
 const buildQueryURL = (movieQuery: string, page = 1) => {
   return `${API_URL}?apikey=${API_KEY}&s=${movieQuery
