@@ -24,6 +24,7 @@ const SearchBar = () => {
       return;
     }
 
+    // timeout to let user finish typing before calling api
     const timeout = setTimeout(async () => {
       dispatch(updateSearchString({ searchTerm }));
 

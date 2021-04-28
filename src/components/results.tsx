@@ -1,6 +1,8 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Card, List, Pagination } from 'semantic-ui-react';
+import { updateMovieResults } from '../redux/actions/movies';
+import { getMoviesByPage } from '../api/omdb';
 import ResultItem from './items/result-item';
 
 interface ResultsProps {
@@ -9,6 +11,9 @@ interface ResultsProps {
 
 const Results = (props: ResultsProps) => {
   const { className } = props;
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
   const searchString = useSelector(
     (state: ShoppiesState) => state.search.searchTerm
   );
@@ -16,12 +21,26 @@ const Results = (props: ResultsProps) => {
   const resultsPage = useSelector(
     (state: ShoppiesState) => state.search.pagesNumber
   );
+
+  useEffect(() => {
+    if (results.length === 0) {
+      setCurrentPage(1);
+    }
+  }, [results.length]);
+
   const searchResults = () => {
     if (searchString) {
       return `Results for "${searchString}"`;
     } else {
-      return 'Waiting for a movie search 🎥 !';
+      return 'Try searching a movie 🎥 !';
     }
+  };
+
+  const handlePageChange = async (pageChangeEvent: any) => {
+    const { activePage } = pageChangeEvent;
+    setCurrentPage(activePage);
+    const data = await getMoviesByPage(searchString, activePage);
+    dispatch(updateMovieResults(data.Search));
   };
 
   return (
@@ -39,7 +58,8 @@ const Results = (props: ResultsProps) => {
         {results.length > 0 && (
           <Pagination
             boundaryRange={0}
-            defaultActivePage={1}
+            onPageChange={(e, data) => handlePageChange(data)}
+            activePage={currentPage}
             ellipsisItem={null}
             firstItem={null}
             lastItem={null}
