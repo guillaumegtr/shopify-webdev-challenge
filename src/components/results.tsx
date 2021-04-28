@@ -1,6 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Card } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Card, List, Pagination } from 'semantic-ui-react';
+import { updateMovieResults } from '../redux/actions/movies';
+import { getMoviesByPage } from '../api/omdb';
+import ResultItem from './items/result-item';
 
 interface ResultsProps {
   className: string;
@@ -8,10 +11,63 @@ interface ResultsProps {
 
 const Results = (props: ResultsProps) => {
   const { className } = props;
-  const searchString = useSelector((state: ShoppiesState) => state.searchTerm);
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const searchString = useSelector(
+    (state: ShoppiesState) => state.search.searchTerm
+  );
+  const results = useSelector((state: ShoppiesState) => state.movies);
+  const resultsPage = useSelector(
+    (state: ShoppiesState) => state.search.pagesNumber
+  );
+
+  useEffect(() => {
+    if (results.length === 0) {
+      setCurrentPage(1);
+    }
+  }, [results.length]);
+
+  const searchResults = () => {
+    if (searchString) {
+      return `Results for "${searchString}"`;
+    } else {
+      return 'Try searching a movie 🎥 !';
+    }
+  };
+
+  const handlePageChange = async (pageChangeEvent: any) => {
+    const { activePage } = pageChangeEvent;
+    setCurrentPage(activePage);
+    const data = await getMoviesByPage(searchString, activePage);
+    dispatch(updateMovieResults(data.Search));
+  };
+
   return (
     <Card className={`results p-1 ${className}`}>
-      <Card.Header as="h4">{`Results for "${searchString}"`}</Card.Header>
+      <Card.Header as="h4">{searchResults()}</Card.Header>
+      <Card.Content>
+        <List>
+          {results &&
+            results.map((movie, i) => (
+              <ResultItem key={i} movie={movie} List={List} />
+            ))}
+        </List>
+      </Card.Content>
+      <div className="flex-row justify-center">
+        {results.length > 0 && (
+          <Pagination
+            boundaryRange={0}
+            onPageChange={(e, data) => handlePageChange(data)}
+            activePage={currentPage}
+            ellipsisItem={null}
+            firstItem={null}
+            lastItem={null}
+            siblingRange={1}
+            totalPages={resultsPage}
+          />
+        )}
+      </div>
     </Card>
   );
 };

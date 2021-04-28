@@ -1,11 +1,30 @@
-import { UPDATE_SEARCH_STRING } from '../../constants/actionTypes';
+import {
+  UPDATE_SEARCH_STRING,
+  UPDATE_RESULTS_PAGES,
+  CLEAR_SEARCH,
+} from '../../constants/actionTypes';
 
-const updateSearchString = (searchTerm: string) => {
+const updateSearchString = (search: ISearch) => {
   const action: SearchAction = {
     type: UPDATE_SEARCH_STRING,
-    searchTerm,
+    search,
   };
   return action;
 };
 
-export default updateSearchString;
+const updatePageNumberCount = (search: ISearch) => {
+  const action: SearchAction = {
+    type: UPDATE_RESULTS_PAGES,
+    search,
+  };
+  return action;
+};
+
+const clearSearch = () => {
+  const action: SearchAction = {
+    type: CLEAR_SEARCH,
+  };
+  return action;
+};
+
+export { updateSearchString, updatePageNumberCount, clearSearch };

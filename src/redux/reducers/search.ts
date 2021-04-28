@@ -1,9 +1,24 @@
-import { UPDATE_SEARCH_STRING } from '../../constants/actionTypes';
+import {
+  CLEAR_SEARCH,
+  UPDATE_SEARCH_STRING,
+  UPDATE_RESULTS_PAGES,
+} from '../../constants/actionTypes';
 
-const searchReducer = (state: string = '', action: SearchAction) => {
-  const { searchTerm } = action;
-  if (action.type === UPDATE_SEARCH_STRING) {
-    state = searchTerm;
+const initialState: ISearch = {
+  pagesNumber: 0,
+  searchTerm: '',
+};
+
+const searchReducer = (state: ISearch = initialState, action: SearchAction) => {
+  const { search, type } = action;
+
+  if (type === UPDATE_SEARCH_STRING) {
+    state.searchTerm = search.searchTerm;
+  } else if (type === UPDATE_RESULTS_PAGES) {
+    state.pagesNumber = search.pagesNumber;
+  } else if (type === CLEAR_SEARCH) {
+    state.pagesNumber = 0;
+    state.searchTerm = '';
   }
   return state;
 };

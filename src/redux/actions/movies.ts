@@ -1,11 +1,12 @@
-import { ADD_SEARCH_RESULTS } from '../../constants/actionTypes';
+import { UPDATE_MOVIE_RESULTS } from '../../constants/actionTypes';
+import { MovieDTO } from '../../model/MovieDTO';
 
-const addMovies = (movies: IMovie[]) => {
+const updateMovieResults = (movies: MovieDTO[]) => {
   const action: MoviesAction = {
-    type: ADD_SEARCH_RESULTS,
-    movies,
+    type: UPDATE_MOVIE_RESULTS,
+    movies: movies ? MovieDTO.toMovie(movies) : [],
   };
   return action;
 };
 
-export { addMovies };
+export { updateMovieResults };
