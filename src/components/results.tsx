@@ -23,8 +23,6 @@ const Results = (props: ResultsProps) => {
     (state: ShoppiesState) => state.search.pagesNumber
   );
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     if (results.length === 0) {
       setCurrentPage(1);
