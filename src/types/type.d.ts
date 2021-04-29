@@ -1,12 +1,10 @@
 interface IMovie {
+  id: string;
   title: string;
   year: string;
   type: string;
   poster: string;
-}
-
-interface INominate {
-  name: string;
+  isNominated?: boolean;
 }
 
 interface ISearch {
@@ -17,12 +15,17 @@ interface ISearch {
 type ShoppiesState = {
   search: ISearch;
   movies: IMovie[];
-  nominates: INominate[];
+  nominatedMovies: IMovie[];
 };
 
 type MoviesAction = {
   type: string;
   movies: IMovie[];
+};
+
+type NominateAction = {
+  type: string;
+  movie: IMovie;
 };
 
 type SearchAction = {

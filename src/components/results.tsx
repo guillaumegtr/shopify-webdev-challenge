@@ -13,6 +13,7 @@ const Results = (props: ResultsProps) => {
   const { className } = props;
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  // const [results, setResults] = useState<IMovie[]>([]);
 
   const searchString = useSelector(
     (state: ShoppiesState) => state.search.searchTerm
@@ -22,11 +23,13 @@ const Results = (props: ResultsProps) => {
     (state: ShoppiesState) => state.search.pagesNumber
   );
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     if (results.length === 0) {
       setCurrentPage(1);
     }
-  }, [results.length]);
+  }, [results]);
 
   const searchResults = () => {
     if (searchString) {
@@ -50,7 +53,12 @@ const Results = (props: ResultsProps) => {
         <List>
           {results &&
             results.map((movie, i) => (
-              <ResultItem key={i} movie={movie} List={List} />
+              <ResultItem
+                key={i}
+                movie={movie}
+                List={List}
+                nominated={movie.isNominated}
+              />
             ))}
         </List>
       </Card.Content>
