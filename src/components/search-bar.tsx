@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, Icon, Input, Form } from 'semantic-ui-react';
 import {
   updateSearchString,
@@ -14,6 +14,9 @@ const SEARCH_DELAY = 500;
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [timeoutId, setTimeoutId] = useState<any>(null);
+  const nominatedMovies = useSelector(
+    (state: ShoppiesState) => state.nominatedMovies
+  );
 
   const handleChange = async (searchTerm: string) => {
     clearTimeout(timeoutId);

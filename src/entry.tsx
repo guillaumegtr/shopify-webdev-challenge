@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './routes/home';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { initNomination } from './redux/actions/nominate';
 
 const Entry = () => {
+  const dispatch = useDispatch();
+
+  const setupApp = () => {
+    const nominations: IMovie[] =
+      JSON.parse(localStorage.getItem('nominations')) || [];
+    nominations.forEach((m) => {
+      dispatch(initNomination(m));
+    });
+  };
+
+  useEffect(() => {
+    setupApp();
+  }, []);
+
   return (
     <BrowserRouter>
       <Switch>
