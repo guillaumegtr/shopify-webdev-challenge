@@ -1,5 +1,6 @@
 import {
   INITIALIZE_NOMINATIONS,
+  REMOVE_NOMINATION,
   NOMINATE_MOVIE,
 } from '../../constants/actionTypes';
 
@@ -19,4 +20,12 @@ const initNomination = (movie: IMovie) => {
   return action;
 };
 
-export { nominateMovie, initNomination };
+const removeNomination = (movie: IMovie) => {
+  const action: NominateAction = {
+    type: REMOVE_NOMINATION,
+    movie: movie,
+  };
+  return action;
+};
+
+export { nominateMovie, initNomination, removeNomination };

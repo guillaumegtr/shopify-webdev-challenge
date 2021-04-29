@@ -9,8 +9,6 @@ export class MovieDTO {
     const nominations: IMovie[] =
       JSON.parse(localStorage.getItem('nominations')) || [];
 
-    console.log('results', nominations);
-
     return movies.map((m) => {
       return {
         id: m.imdbID,

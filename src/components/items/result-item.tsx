@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, List } from 'semantic-ui-react';
 import { nominateMovie } from '../../redux/actions/nominate';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,26 +6,33 @@ import { useDispatch, useSelector } from 'react-redux';
 interface ResultProps {
   List: typeof List;
   movie: IMovie;
-  nominated: boolean;
 }
 
+const maxNominations = 5;
+
 const ResultItem = (props: ResultProps) => {
-  const { List, movie, nominated } = props;
+  const { List, movie } = props;
   const dispatch = useDispatch();
-  const nominatedMovies = useSelector(
-    (state: ShoppiesState) => state.nominatedMovies
+  const isNominated = useSelector((state: ShoppiesState) =>
+    state.nominatedMovies.some((m) => m.id === movie.id)
+  );
+  const nominatedCount = useSelector(
+    (state: ShoppiesState) => state.nominatedMovies.length
   );
 
   const handleNominate = () => {
-    if (!nominated) {
+    if (nominatedCount < maxNominations && !isNominated) {
       dispatch(nominateMovie(movie));
+    } else {
+      //TODO: add alert to tell user max nominations is 5!
+      console.log('max nominations!');
     }
   };
 
   return (
     <List.Item>
       <List.Content floated="right">
-        <Button onClick={handleNominate} disabled={nominated} size="tiny">
+        <Button onClick={handleNominate} disabled={isNominated} size="tiny">
           Nominate
         </Button>
       </List.Content>

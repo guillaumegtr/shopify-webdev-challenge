@@ -53,12 +53,7 @@ const Results = (props: ResultsProps) => {
         <List>
           {results &&
             results.map((movie, i) => (
-              <ResultItem
-                key={i}
-                movie={movie}
-                List={List}
-                nominated={movie.isNominated}
-              />
+              <ResultItem key={i} movie={movie} List={List} />
             ))}
         </List>
       </Card.Content>
