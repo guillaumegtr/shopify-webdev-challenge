@@ -4,14 +4,14 @@ import { Button, Message, Transition } from 'semantic-ui-react';
 
 const NominationBanner = () => {
   const nominationsCount = useSelector(
-    (state: ShoppiesState) => state.nominatedMovies.length
+    (state: ShoppiesState) => state.nominatedMovies.movies.length
+  );
+
+  const isNominationAttempt = useSelector(
+    (state: ShoppiesState) => state.nominatedMovies.toggleNomination
   );
 
   const [togglePulse, setTogglePulse] = useState(false);
-
-  useEffect(() => {
-    setTogglePulse(nominationsCount === 5);
-  }, [nominationsCount]);
 
   const test = () => {
     setTogglePulse(!togglePulse);
@@ -20,7 +20,11 @@ const NominationBanner = () => {
   return (
     <>
       {nominationsCount === 5 && (
-        <Transition animation="pulse" duration="500" visible={togglePulse}>
+        <Transition
+          animation="pulse"
+          duration="500"
+          visible={!isNominationAttempt}
+        >
           <Message
             warning
             size="small"
@@ -29,7 +33,6 @@ const NominationBanner = () => {
           />
         </Transition>
       )}
-      <Button onClick={test}>test</Button>
     </>
   );
 };

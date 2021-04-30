@@ -59,7 +59,7 @@ const Results = (props: ResultsProps) => {
           <Pagination
             boundaryRange={0}
             onPageChange={(e, data) => handlePageChange(data)}
-            activePage={currentPage}
+            defaultActivePage={currentPage}
             ellipsisItem={null}
             firstItem={null}
             lastItem={null}

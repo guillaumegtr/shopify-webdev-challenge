@@ -10,7 +10,7 @@ interface NominationsProps {
 const Nominations = (props: NominationsProps) => {
   const { className } = props;
   const nominatedMovies = useSelector(
-    (state: ShoppiesState) => state.nominatedMovies
+    (state: ShoppiesState) => state.nominatedMovies.movies
   );
 
   return (
