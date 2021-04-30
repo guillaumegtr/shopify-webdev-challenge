@@ -32,7 +32,12 @@ const ResultItem = (props: ResultProps) => {
   return (
     <List.Item>
       <List.Content floated="right">
-        <Button onClick={handleNominate} disabled={isNominated} size="tiny">
+        <Button
+          className={nominatedCount === maxNominations && 'not-allowed'}
+          onClick={handleNominate}
+          disabled={isNominated}
+          size="tiny"
+        >
           Nominate
         </Button>
       </List.Content>

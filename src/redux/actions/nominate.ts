@@ -2,6 +2,7 @@ import {
   INITIALIZE_NOMINATIONS,
   REMOVE_NOMINATION,
   NOMINATE_MOVIE,
+  TOGGLE_NOMINATION,
 } from '../../constants/actionTypes';
 
 const nominateMovie = (movie: IMovie) => {
