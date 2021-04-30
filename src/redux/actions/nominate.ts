@@ -2,6 +2,7 @@ import {
   INITIALIZE_NOMINATIONS,
   REMOVE_NOMINATION,
   NOMINATE_MOVIE,
+  TOGGLE_NOMINATION,
 } from '../../constants/actionTypes';
 
 const nominateMovie = (movie: IMovie) => {
@@ -28,4 +29,16 @@ const removeNomination = (movie: IMovie) => {
   return action;
 };
 
-export { nominateMovie, initNomination, removeNomination };
+const toggleNominationAttempt = () => {
+  const action: NominateAction = {
+    type: TOGGLE_NOMINATION,
+  };
+  return action;
+};
+
+export {
+  nominateMovie,
+  initNomination,
+  removeNomination,
+  toggleNominationAttempt,
+};

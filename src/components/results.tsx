@@ -13,7 +13,6 @@ const Results = (props: ResultsProps) => {
   const { className } = props;
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  // const [results, setResults] = useState<IMovie[]>([]);
 
   const searchString = useSelector(
     (state: ShoppiesState) => state.search.searchTerm
@@ -60,7 +59,7 @@ const Results = (props: ResultsProps) => {
           <Pagination
             boundaryRange={0}
             onPageChange={(e, data) => handlePageChange(data)}
-            activePage={currentPage}
+            defaultActivePage={currentPage}
             ellipsisItem={null}
             firstItem={null}
             lastItem={null}

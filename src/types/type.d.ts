@@ -7,6 +7,11 @@ interface IMovie {
   isNominated?: boolean;
 }
 
+interface INomination {
+  movies: IMovie[];
+  toggleNomination?: boolean;
+}
+
 interface ISearch {
   searchTerm?: string;
   pagesNumber?: number;
@@ -15,7 +20,7 @@ interface ISearch {
 type ShoppiesState = {
   search: ISearch;
   movies: IMovie[];
-  nominatedMovies: IMovie[];
+  nominatedMovies: INomination;
 };
 
 type MoviesAction = {
@@ -25,7 +30,7 @@ type MoviesAction = {
 
 type NominateAction = {
   type: string;
-  movie: IMovie;
+  movie?: IMovie;
 };
 
 type SearchAction = {
