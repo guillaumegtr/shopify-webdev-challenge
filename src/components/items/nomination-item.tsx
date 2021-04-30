@@ -9,11 +9,16 @@ interface ResultProps {
   animationDuration?: number;
 }
 
+const removeEffect = new Audio('../../../public/assets/delete_effect.mp3');
+removeEffect.volume = 0.5;
+
 const NominationItem = (props: ResultProps) => {
   const { List, movie, animationDuration = undefined } = props;
   const dispatch = useDispatch();
 
   const handleRemove = () => {
+    removeEffect.currentTime = 0;
+    removeEffect.play();
     dispatch(removeNomination(movie));
   };
 

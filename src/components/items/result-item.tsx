@@ -12,6 +12,10 @@ interface ResultProps {
 }
 
 const maxNominations = 5;
+const nominateEffect = new Audio('../../../public/assets/button_effect.mp3');
+const deniedEffect = new Audio('../../../public/assets/denied_effect.mp3');
+deniedEffect.volume = 0.2;
+nominateEffect.volume = 0.5;
 
 const ResultItem = (props: ResultProps) => {
   const { List, movie } = props;
@@ -26,9 +30,12 @@ const ResultItem = (props: ResultProps) => {
   const handleNominate = () => {
     if (nominatedCount < maxNominations && !isNominated) {
       dispatch(nominateMovie(movie));
+      nominateEffect.currentTime = 0;
+      nominateEffect.play();
     } else {
       dispatch(toggleNominationAttempt());
-      console.warn('max nominations!');
+      deniedEffect.currentTime = 0;
+      deniedEffect.play();
     }
   };
 

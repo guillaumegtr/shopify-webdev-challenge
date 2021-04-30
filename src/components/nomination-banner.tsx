@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Message, Transition } from 'semantic-ui-react';
+import { Message, Transition } from 'semantic-ui-react';
 
 const NominationBanner = () => {
   const nominationsCount = useSelector(
@@ -10,12 +10,6 @@ const NominationBanner = () => {
   const isNominationAttempt = useSelector(
     (state: ShoppiesState) => state.nominatedMovies.toggleNomination
   );
-
-  const [togglePulse, setTogglePulse] = useState(false);
-
-  const test = () => {
-    setTogglePulse(!togglePulse);
-  };
 
   return (
     <>
