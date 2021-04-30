@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Card, List } from 'semantic-ui-react';
+import { Card, List, Transition } from 'semantic-ui-react';
 import NominationItem from './items/nomination-item';
 
 interface NominationsProps {
@@ -17,12 +17,18 @@ const Nominations = (props: NominationsProps) => {
     <Card className={`nominations p-1 ${className}`}>
       <Card.Header as="h4">Nominations</Card.Header>
       <Card.Content>
-        <List>
+        <Transition.Group as={List} duration={400} animation="slide right">
           {nominatedMovies &&
             nominatedMovies.map((movie, i) => (
-              <NominationItem key={i} List={List} movie={movie} />
+              <List.Item key={i}>
+                <NominationItem
+                  movie={movie}
+                  List={List}
+                  animationDuration={400}
+                />
+              </List.Item>
             ))}
-        </List>
+        </Transition.Group>
       </Card.Content>
     </Card>
   );
