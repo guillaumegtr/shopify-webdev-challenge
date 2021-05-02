@@ -1,6 +1,6 @@
-# The Shoppies
+# The Shoppies 🎥
 
-Front-end internship challenge for Shopify's Internship (Fall 2021).
+Front-end challenge for Shopify's Internship (Fall 2021)
 
 ---
 
@@ -16,7 +16,44 @@ npm run
 
 ---
 
-## Features
+## Features 👌
 
-I decided to build this using React Typescript and Redux. This is the front-end framework that I have the most experience with.
-Features I decide to implement for this challenge:
+I decided to build the following project using React Typescript and Redux ⚛. This is the web front-end framework that I have the most experience with.
+
+**Simple and clean design is what I aimed for concerning UI/UX** 🧼
+
+#### Implemented features
+
+- Search OMDB and display the results (movies, series and episodes)
+
+- Add a movie from the search results to a nomination list
+
+- Nominations are saved in local storage
+
+- Remove a nomination from the list
+
+## Technical requirements 🎯
+
+- Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx) ✔
+
+- Each search result should list at least its title, year of release and a button to nominate that film ✔
+
+- Updates to the search terms should update the result list ✔
+
+- Movies in search results can be added and removed from the nomination list ✔
+
+- If a search result has already been nominated, disable its nominate button ✔
+
+- Display a banner when the user has 5 nominations ✔
+
+## Extras done 🌟
+
+- Nomination list is saved when user leaves the page (browser's localStorage)
+
+- Animations for loading, adding/deleting a nomination and notification sound when doing so
+
+- Pretty view with extra details on nominated movies
+
+## To do
+
+- Shareable links
