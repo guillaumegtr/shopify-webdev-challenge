@@ -18,7 +18,7 @@ const NominationsPretty = () => {
         {nominatedMovies.length === 0 ? (
           <p>Nothing to show. Nominate at least one movie 👍</p>
         ) : (
-          nominatedMovies.map((m) => <MovieCard movie={m} />)
+          nominatedMovies.map((m, i) => <MovieCard key={i} movie={m} />)
         )}
       </div>
       <div className="flex-row">

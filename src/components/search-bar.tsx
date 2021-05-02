@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Card, Form } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Card, Form, Checkbox } from 'semantic-ui-react';
 import {
   updateSearchString,
   updatePageNumberCount,
   clearSearch,
+  updateSearchType,
 } from '../redux/actions/search';
 import { updateMovieResults } from '../redux/actions/movies';
 import { searchMovieByName } from '../api/omdb';
 import { Search } from 'semantic-ui-react';
+
+type SearchType = '' | 'movie' | 'series' | 'episode';
 
 const SEARCH_DELAY = 500;
 
@@ -16,22 +19,42 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const [timeoutId, setTimeoutId] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [userInput, setUserInput] = useState('');
+
+  // TODO: reset page to first page when searchType changes
+  const searchType = useSelector(
+    (state: ShoppiesState) => state.search.searchType
+  );
 
   const handleChange = async (searchTerm: string) => {
     clearTimeout(timeoutId);
-
+    setUserInput(searchTerm);
     if (!searchTerm) {
       dispatch(clearSearch());
       dispatch(updateMovieResults([]));
       return;
     }
 
+    getData(searchTerm);
+  };
+
+  const handleChangeSearchType = (selectedType: SearchType) => {
+    dispatch(updateSearchType({ searchType: selectedType }));
+    if (userInput) {
+      getData(userInput, selectedType);
+    }
+  };
+
+  const getData = (searchTerm, selectedSearchType?: string) => {
     // timeout to let user finish typing before calling api
     const timeout = setTimeout(async () => {
       setIsLoading(true);
       dispatch(updateSearchString({ searchTerm }));
 
-      const data = await searchMovieByName(searchTerm);
+      const data = await searchMovieByName(
+        searchTerm,
+        selectedSearchType || searchType
+      );
 
       dispatch(updateMovieResults(data.Search));
       // api returns 10 results per page
@@ -57,6 +80,35 @@ const SearchBar = () => {
             loading={isLoading}
           />
         </Form.Field>
+        <div className="flex-row">
+          <Checkbox
+            radio
+            label="Any"
+            checked={searchType === ''}
+            onChange={() => handleChangeSearchType('')}
+          />
+          <Checkbox
+            radio
+            className="ml-1"
+            label="Movies"
+            checked={searchType === 'movie'}
+            onChange={() => handleChangeSearchType('movie')}
+          />
+          <Checkbox
+            radio
+            className="ml-1"
+            label="Series"
+            checked={searchType === 'series'}
+            onChange={() => handleChangeSearchType('series')}
+          />
+          <Checkbox
+            radio
+            className="ml-1"
+            label="Episode"
+            checked={searchType === 'episode'}
+            onChange={() => handleChangeSearchType('episode')}
+          />
+        </div>
       </Form>
     </Card>
   );

@@ -1,10 +1,10 @@
-# react-app-boiler
+# The Shoppies
 
-Fork or download to start developping quickly.
+Front-end internship challenge for Shopify's Internship (Fall 2021).
 
 ---
 
-## Setup
+## Run locally
 
 ```sh
 git clone https://github.com/guillaumegtr/react-app-boiler.git
@@ -16,17 +16,7 @@ npm run
 
 ---
 
-## Configs
+## Features
 
-- Webpack (common, dev, prod)
-- Babel ready
-- Style with Sass
-- Tests with Jest
-
----
-
-## Goals
-
-[ ] Setup testing
-
-[ ] Setup for CI/CD
+I decided to build this using React Typescript and Redux. This is the front-end framework that I have the most experience with.
+Features I decide to implement for this challenge:
