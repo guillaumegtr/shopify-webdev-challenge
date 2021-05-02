@@ -14,6 +14,7 @@ interface INomination {
 
 interface ISearch {
   searchTerm?: string;
+  searchType?: string;
   pagesNumber?: number;
 }
 
