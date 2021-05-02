@@ -3,6 +3,7 @@ import Home from './routes/home';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { initNomination } from './redux/actions/nominate';
+import NominationsPretty from './routes/nominations-pretty';
 
 const Entry = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Entry = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/home" component={Home} />
+        <Route path="/nominations" component={NominationsPretty} />
         {/* other route redirects to home */}
         <Route path="/*" render={() => <Redirect to="/home" />} />
       </Switch>

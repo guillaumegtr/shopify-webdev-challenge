@@ -1,0 +1,41 @@
+.nominations-pretty {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  * {
+    &:last-child,
+    :first-child {
+      margin: 0;
+    }
+  }
+
+  .cards-container {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .ui.card {
+      width: fit-content;
+      margin: 1rem;
+
+      .header,
+      .meta {
+        padding: 0.25rem;
+        max-width: 207px;
+      }
+
+      .meta {
+        padding-top: 0;
+      }
+
+      .ui.image {
+        img {
+          height: 300px;
+          width: 207px;
+        }
+      }
+    }
+  }
+}

@@ -5,15 +5,32 @@
   align-items: center;
   justify-content: center;
 
-  .container {
-    width: 80vw;
+  .section-header {
+    * {
+      &:last-child,
+      :first-child {
+        margin: 0;
+      }
+    }
   }
 
   .section-3 {
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     .ui.card {
       margin-top: 0px;
       margin-bottom: 0px;
-      width: 100%;
+      min-width: 48%;
+
+      @media screen and (max-width: 751px) {
+        min-width: 100%;
+
+        &:last-child {
+          margin-top: 1.5rem;
+        }
+      }
     }
   }
 
