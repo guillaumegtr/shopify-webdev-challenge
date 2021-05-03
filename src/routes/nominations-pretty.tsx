@@ -21,9 +21,12 @@ const NominationsPretty = () => {
           nominatedMovies.map((m, i) => <MovieCard key={i} movie={m} />)
         )}
       </div>
-      <div className="flex-row">
+      <div className="flex-row nav-footer">
         <a onClick={goToHome} style={{ cursor: 'pointer' }}>
           Back
+        </a>
+        <a onClick={goToHome} style={{ cursor: 'pointer' }}>
+          Share
         </a>
       </div>
     </div>
