@@ -26,7 +26,6 @@ const searchMovieByName = async (
     movieQuery: movieName,
     searchType: searchType,
   });
-  console.log(queryURL);
   const res = await axios.get(queryURL);
 
   return handleResultResponse(res);
@@ -34,7 +33,6 @@ const searchMovieByName = async (
 
 const searchMovieByID = async (id: string) => {
   const queryURL = buildQueryURL({ movieId: id });
-  console.log(queryURL);
   const res = await axios.get(queryURL);
 
   return handleResultResponse(res);

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import MovieCard from './movie-card';
 
-const PrettyUser = () => {
-  const nominatedMovies = useSelector(
-    (state: ShoppiesState) => state.nominatedMovies.movies
-  );
+interface PrettyUserProps {
+  nominatedMovies: IMovie[];
+}
 
+const PrettyUser = (props: PrettyUserProps) => {
+  const { nominatedMovies } = props;
   return (
     <>
       {nominatedMovies.length === 0 ? (

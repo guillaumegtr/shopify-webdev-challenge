@@ -3,7 +3,6 @@ import MovieCard from './movie-card';
 
 interface PrettyShareProps {
   sharedMovies: IMovie[];
-  isLoading: boolean;
 }
 
 const PrettyShare = (props: PrettyShareProps) => {
