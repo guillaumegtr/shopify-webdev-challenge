@@ -14,7 +14,7 @@ interface INomination {
 
 interface ISearch {
   searchTerm?: string;
-  searchType?: string;
+  searchType?: SearchType;
   pagesNumber?: number;
 }
 
@@ -38,3 +38,5 @@ type SearchAction = {
   type: string;
   search?: ISearch;
 };
+
+type SearchType = '' | 'movie' | 'series' | 'episode';

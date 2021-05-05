@@ -11,8 +11,6 @@ import { updateMovieResults } from '../redux/actions/movies';
 import { searchMovieByName } from '../api/omdb';
 import { Search } from 'semantic-ui-react';
 
-type SearchType = '' | 'movie' | 'series' | 'episode';
-
 const SEARCH_DELAY = 500;
 
 const SearchBar = () => {
@@ -45,7 +43,7 @@ const SearchBar = () => {
     }
   };
 
-  const getData = (searchTerm, selectedSearchType?: string) => {
+  const getData = (searchTerm, selectedSearchType?: SearchType) => {
     // timeout to let user finish typing before calling api
     const timeout = setTimeout(async () => {
       setIsLoading(true);
