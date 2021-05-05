@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, List } from 'semantic-ui-react';
+import nominateSound from '../../assets/button_effect.mp3';
+import deniedSound from '../../assets/denied_effect.mp3';
 import {
   nominateMovie,
   toggleNominationAttempt,
@@ -12,8 +14,8 @@ interface ResultProps {
 }
 
 const maxNominations = 5;
-const nominateEffect = new Audio('../../../public/assets/button_effect.mp3');
-const deniedEffect = new Audio('../../../public/assets/denied_effect.mp3');
+const nominateEffect = new Audio(nominateSound);
+const deniedEffect = new Audio(deniedSound);
 deniedEffect.volume = 0.2;
 nominateEffect.volume = 0.5;
 

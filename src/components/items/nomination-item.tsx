@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Button, List } from 'semantic-ui-react';
 import { removeNomination } from '../../redux/actions/nominate';
 import { useDispatch } from 'react-redux';
+import deleteSound from '../../assets/delete_effect.mp3';
 
 interface ResultProps {
   List: typeof List;
@@ -9,7 +10,7 @@ interface ResultProps {
   animationDuration?: number;
 }
 
-const removeEffect = new Audio('../../../public/assets/delete_effect.mp3');
+const removeEffect = new Audio(deleteSound);
 removeEffect.volume = 0.5;
 
 const NominationItem = (props: ResultProps) => {
