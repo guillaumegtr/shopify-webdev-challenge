@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, List, Pagination, TransitionGroup } from 'semantic-ui-react';
+import { Card, List, Pagination } from 'semantic-ui-react';
 import { updateMovieResults } from '../redux/actions/movies';
 import { getMoviesByPage } from '../api/omdb';
 import ResultItem from './items/result-item';
