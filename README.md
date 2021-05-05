@@ -4,6 +4,23 @@ Front-end challenge for Shopify's Internship (Fall 2021)
 
 Deployed here 👉 [The Shoppies](https://shopify-webdev-challenge.herokuapp.com/) via Heroku
 
+## Presentation 💡
+
+#### Home page
+
+Where you can search and nominate movies
+![home](./documentation/home_view.PNG)
+
+#### Pretty nominations view
+
+Acces to the pretty view for nominations
+![home](./documentation/view_nominations.PNG)
+
+#### Nominations and share
+
+View and share nominations
+![home](./documentation/nomination_view.PNG)
+
 ---
 
 # Run locally

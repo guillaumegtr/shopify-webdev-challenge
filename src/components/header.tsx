@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <Segment basic>
       <Label as="a" onClick={handleClick} ribbon color="green">
-        Pretty view
+        View nominations
       </Label>
       <h1>The Shoppies</h1>
     </Segment>

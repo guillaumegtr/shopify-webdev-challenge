@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Form, Checkbox } from 'semantic-ui-react';
 import {
@@ -19,7 +19,6 @@ const SearchBar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState('');
 
-  // TODO: reset page to first page when searchType changes
   const searchType = useSelector(
     (state: ShoppiesState) => state.search.searchType
   );

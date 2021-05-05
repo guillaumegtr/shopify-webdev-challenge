@@ -14,6 +14,9 @@ const Results = (props: ResultsProps) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
+  const searchType = useSelector(
+    (state: ShoppiesState) => state.search.searchType
+  );
   const searchString = useSelector(
     (state: ShoppiesState) => state.search.searchTerm
   );
@@ -21,6 +24,10 @@ const Results = (props: ResultsProps) => {
   const resultsPage = useSelector(
     (state: ShoppiesState) => state.search.pagesNumber
   );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchType]);
 
   useEffect(() => {
     if (results.length === 0) {
@@ -59,7 +66,7 @@ const Results = (props: ResultsProps) => {
           <Pagination
             boundaryRange={0}
             onPageChange={(e, data) => handlePageChange(data)}
-            defaultActivePage={currentPage}
+            activePage={currentPage}
             ellipsisItem={null}
             firstItem={null}
             lastItem={null}
