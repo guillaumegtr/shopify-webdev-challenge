@@ -2,27 +2,29 @@
 
 Front-end challenge for Shopify's Internship (Fall 2021)
 
+Deployed here 👉 [The Shoppies](https://shopify-webdev-challenge.herokuapp.com/) via Heroku
+
 ---
 
-## Run locally
+# Run locally
 
 ```sh
 git clone https://github.com/guillaumegtr/react-app-boiler.git
 
 npm install
 
-npm run
+npm run start
 ```
 
 ---
 
-## Features 👌
+# Features 👌
 
 I decided to build the following project using React Typescript and Redux ⚛. This is the web front-end framework that I have the most experience with.
 
 **Simple and clean design is what I aimed for concerning UI/UX** 🧼
 
-#### Implemented features
+### Implemented features
 
 - Search OMDB and display the results (movies, series and episodes)
 
@@ -45,6 +47,8 @@ I decided to build the following project using React Typescript and Redux ⚛. T
 - If a search result has already been nominated, disable its nominate button ✔
 
 - Display a banner when the user has 5 nominations ✔
+
+- Web app hosted (on Heroku)
 
 ## Extras done 🌟
 
