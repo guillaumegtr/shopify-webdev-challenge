@@ -48,7 +48,7 @@ I decided to build the following project using React Typescript and Redux ⚛. T
 
 - Display a banner when the user has 5 nominations ✔
 
-- Web app hosted (on Heroku)
+- Web app hosted (on Heroku) ✔
 
 ## Extras done 🌟
 
@@ -57,7 +57,5 @@ I decided to build the following project using React Typescript and Redux ⚛. T
 - Animations for loading, adding/deleting a nomination and notification sound when doing so
 
 - Pretty view with extra details on nominated movies
-
-## To do
 
 - Shareable links
