@@ -14,12 +14,12 @@ Where you can search and nominate movies
 #### Pretty nominations view
 
 Acces to the pretty view for nominations
-![home](./documentation/view_nominations.PNG)
+![nomination_button](./documentation/view_nominations.png)
 
 #### Nominations and share
 
 View and share nominations
-![home](./documentation/nomination_view.PNG)
+![nominations_view](./documentation/nomination_view.PNG)
 
 ---
 
