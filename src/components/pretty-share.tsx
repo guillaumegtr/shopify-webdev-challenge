@@ -11,11 +11,16 @@ const PrettyShare = (props: PrettyShareProps) => {
 
   return (
     <>
-      {sharedMovies.length > 0 ? (
-        sharedMovies.map((m, i) => <MovieCard key={i} movie={m} />)
-      ) : (
-        <p>Shared movies not found ... Try again please 🤓</p>
-      )}
+      <div className="flex-row">
+        <h1>Here is your friend's Nomination List 🍿</h1>
+      </div>
+      <div className="flex-row mt-1">
+        {sharedMovies.length > 0 ? (
+          sharedMovies.map((m, i) => <MovieCard key={i} movie={m} />)
+        ) : (
+          <p>Shared movies not found ... Try again please 🤓</p>
+        )}
+      </div>
     </>
   );
 };

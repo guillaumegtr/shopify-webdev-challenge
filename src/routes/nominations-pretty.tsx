@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, Loader } from 'semantic-ui-react';
+import { Button, Loader, Popup } from 'semantic-ui-react';
 import { getMoviesByImdbIDs } from '../api/omdb';
 import PrettyShare from '../components/pretty-share';
 import PrettyUser from '../components/pretty-user';
@@ -68,12 +68,29 @@ const NominationsPretty = () => {
           Back
         </Button>
         <Button
-          onClick={createShareLink}
+          onClick={() => setIsShareView(false)}
           style={{ cursor: 'pointer' }}
-          disabled={sharedMovies.length === 0 && isShareView}
         >
-          Share
+          My nominations
         </Button>
+        <Popup
+          content="Shareable link copied to clipboard!"
+          inverted
+          position="top center"
+          on="click"
+          trigger={
+            <Button
+              onClick={createShareLink}
+              style={{ cursor: 'pointer' }}
+              disabled={
+                (sharedMovies.length === 0 && isShareView) ||
+                (!isShareView && nominatedMovies.length === 0)
+              }
+            >
+              Share
+            </Button>
+          }
+        />
       </div>
     </div>
   );
