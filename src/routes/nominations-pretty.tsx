@@ -54,15 +54,13 @@ const NominationsPretty = () => {
 
   return (
     <div className="nominations-pretty container">
-      <div className="cards-container flex-row">
-        {isLoading ? (
-          <Loader active inline="centered" />
-        ) : isShareView ? (
-          <PrettyShare sharedMovies={sharedMovies} />
-        ) : (
-          <PrettyUser nominatedMovies={nominatedMovies} />
-        )}
-      </div>
+      {isLoading ? (
+        <Loader active inline="centered" className="my-1" />
+      ) : isShareView ? (
+        <PrettyShare sharedMovies={sharedMovies} />
+      ) : (
+        <PrettyUser nominatedMovies={nominatedMovies} />
+      )}
       <div className="flex-row nav-footer mt-1">
         <Button onClick={goToHome} style={{ cursor: 'pointer' }}>
           Back
