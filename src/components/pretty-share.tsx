@@ -10,7 +10,7 @@ const PrettyShare = (props: PrettyShareProps) => {
 
   return (
     <>
-      <div className="flex-row">
+      <div className="flex-row mt-1">
         <h1>Here is your friend's Nomination List 🍿</h1>
       </div>
       <div className="flex-row my-1">
