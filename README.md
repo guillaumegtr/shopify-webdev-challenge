@@ -26,7 +26,7 @@ View and share nominations
 # Run locally
 
 ```sh
-git clone https://github.com/guillaumegtr/react-app-boiler.git
+git clone https://github.com/guillaumegtr/shopify-webdev-challenge.git
 
 npm install
 
